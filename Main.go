@@ -69,9 +69,9 @@ func PrintThreads() {
 
 func main() {
 
-	UpdateThreads(1, 2, 3, 4, 5)
-
 	InitVariables()
+
+	UpdateThreads(1, 2, 3, 4, 5)
 
 	PrintThreads()
 }
