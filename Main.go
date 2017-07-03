@@ -40,20 +40,24 @@ func UpdateThreads(pages ...int) {
 				threads = append(threads, thread)
 			}
 		}
-		fmt.Printf("Searched %v threads.\n", len(newThreads))
+		fmt.Printf("Searched %v threads on page %v.\n", len(newThreads), page)
 	}
-
-
 }
 
 func PrintThreads() {
 
 	if len(threads) > 0 {
-		//fmt.Print(threads)
 
-		fmt.Printf("Found %v threads totally!", len(threads))
+		fmt.Printf("Found %v threads totally!\n", len(threads))
+
+		for _, thread := range threads {
+
+			fmt.Printf("URL: https://boards.4chan.org/gif/thread/%v \n", thread.Id())
+		}
+	} else {
+
+		fmt.Println("No ylyl threads were found...")
 	}
-
 }
 
 func main() {
