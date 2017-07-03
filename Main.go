@@ -59,7 +59,7 @@ func PrintThreads() {
 
 		for _, thread := range threads {
 
-			fmt.Printf("URL: https://boards.4chan.org/gif/thread/%v \nName: %v\n\n", thread.Id(), thread.Posts[0].Subject)
+			fmt.Printf("URL: https://boards.4chan.org/%v/thread/%v \nName: %v\n\n", searchBoard, thread.Id(), thread.Posts[0].Subject)
 		}
 	} else {
 
