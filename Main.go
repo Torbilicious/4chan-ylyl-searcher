@@ -50,13 +50,15 @@ func PrintThreads() {
 
 		fmt.Printf("Found %v threads totally!\n", len(threads))
 
+		fmt.Println("")
+
 		for _, thread := range threads {
 
-			fmt.Printf("URL: https://boards.4chan.org/gif/thread/%v \n", thread.Id())
+			fmt.Printf("URL: https://boards.4chan.org/gif/thread/%v \nName: %v\n\n", thread.Id(), thread.Posts[0].Subject)
 		}
 	} else {
 
-		fmt.Println("No ylyl threads were found...")
+		fmt.Println("No threads were found.")
 	}
 }
 
