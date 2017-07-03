@@ -8,23 +8,28 @@ import (
 )
 
 var (
-	threads []*api.Thread
+	threads     []*api.Thread
+	searchText  string
+	searchBoard string
 )
 
 
-func ExampleVariables() {
+func InitVariables() {
 	// All requests will be made with HTTPS
 	api.SSL = true
 
 	// will be pulled up to 10 seconds when first used
 	api.UpdateCooldown = 5 * time.Second
+
+	searchText = "ylyl"
+	searchBoard = "gif"
 }
 
 
 func UpdateThreads(pages ...int) {
 
 	for _, page := range pages {
-		newThreads, err := api.GetIndex("gif", page)
+		newThreads, err := api.GetIndex(searchBoard, page)
 		if err != nil {
 			panic(err)
 		}
@@ -35,7 +40,7 @@ func UpdateThreads(pages ...int) {
 
 			//fmt.Println(firstPost.Subject)
 
-			if strings.Contains(strings.ToLower(firstPost.Subject), "ylyl") {
+			if strings.Contains(strings.ToLower(firstPost.Subject), searchText) {
 
 				threads = append(threads, thread)
 			}
@@ -66,7 +71,7 @@ func main() {
 
 	UpdateThreads(1, 2, 3, 4, 5)
 
-	ExampleVariables()
+	InitVariables()
 
 	PrintThreads()
 }
